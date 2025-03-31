@@ -24,5 +24,8 @@
       "binding": "WORKER_SELF_REFERENCE",
       "service": "clawdy-server"
     }
-  ]
+  ],
+  "ai": {
+    "binding": "AI",
+  }
 }
