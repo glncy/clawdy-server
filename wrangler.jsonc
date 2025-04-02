@@ -16,7 +16,7 @@
   "kv_namespaces": [
     {
       "binding": "NEXT_INC_CACHE_KV",
-      "id": "fde17d7ecb324b70bba6dc573eef452c"
+      "id": "49940267587a407c92030bac8e16ba5d"
     }
   ],
   "services": [
@@ -26,6 +26,6 @@
     }
   ],
   "ai": {
-    "binding": "AI",
+    "binding": "AI"
   }
 }
