@@ -33,7 +33,7 @@ app.route("/v1", v1ApiRoutes);
 app.get(
   "/v1/open-api",
   openAPISpecs(
-    v1ApiRoutes,
+    new Hono().basePath("/api/v1").route("/", v1ApiRoutes),
     docSpecs({
       title: "Clawdy API",
       version: "v1",
