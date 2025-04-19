@@ -2,10 +2,27 @@
 # yarn lockfile v1
 
 
+"@ai-sdk/google@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/google/-/google-1.2.8.tgz#33e76bfec386e11758b19cb0f1a00d769a000927"
+  integrity sha512-Q7Y71KGyH5sennNev5xZvt5MhxWlu+crp7tZZtdFbQ9iDkOGrl+TurPssqM0Wv5lYmV+Lc8m14CK9/k7nF2IRA==
+  dependencies:
+    "@ai-sdk/provider" "1.1.0"
+    "@ai-sdk/provider-utils" "2.2.4"
+
 "@ai-sdk/provider-utils@2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@ai-sdk/provider-utils/-/provider-utils-2.2.3.tgz#e94f58537bbed7f90a1ed94f8cd353b79e3ab65c"
   integrity sha512-o3fWTzkxzI5Af7U7y794MZkYNEsxbjLam2nxyoUZSScqkacb7vZ3EYHLh21+xCcSSzEC161C7pZAGHtC0hTUMw==
+  dependencies:
+    "@ai-sdk/provider" "1.1.0"
+    nanoid "^3.3.8"
+    secure-json-parse "^2.7.0"
+
+"@ai-sdk/provider-utils@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/provider-utils/-/provider-utils-2.2.4.tgz#665834a7f0aa79618c1ca715c879e9975c6ff445"
+  integrity sha512-13sEGBxB6kgaMPGOgCLYibF6r8iv8mgjhuToFrOTU09bBxbFQd8ZoARarCfJN6VomCUbUvMKwjTBLb1vQnN+WA==
   dependencies:
     "@ai-sdk/provider" "1.1.0"
     nanoid "^3.3.8"
@@ -6490,10 +6507,10 @@ workerd@1.20250321.0:
     "@cloudflare/workerd-linux-arm64" "1.20250321.0"
     "@cloudflare/workerd-windows-64" "1.20250321.0"
 
-workers-ai-provider@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/workers-ai-provider/-/workers-ai-provider-0.2.2.tgz#86e49e55ee11968bcb9b319b3d9ad2455599d9f6"
-  integrity sha512-jtgM4rZIE6euSQxdXc9B61zDdXPf2T9W038rvvr/wQLeopndImPaGO1tuh9wqwY6kTM/02/yYVruBC/UtIdSvA==
+workers-ai-provider@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/workers-ai-provider/-/workers-ai-provider-0.3.0.tgz#584d092f10830406b276ea0e267f2cb3f8425757"
+  integrity sha512-NCnwRJ0OVgyVIZwbHRmn+8A80vi4iXxnjvLaxn0CCYMsooVKgf52rEIcbap5FJNd7fx3nLOi2OgNKjqS1ipz5A==
   dependencies:
     "@cloudflare/workers-types" "^4.20250313.0"
 

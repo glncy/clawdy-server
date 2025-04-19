@@ -18,6 +18,11 @@ export const llmsStreamChatHandler = factory.createHandlers(
 
     // Set the content type to text/plain
     context.header("Content-Type", "text/plain; charset=utf-8");
-    return stream(context, (stream) => stream.pipe(result.toDataStream()));
+    
+    return stream(context, async (stream) => {
+      if (result.body) {
+        return stream.pipe(result.body);
+      }
+    });
   }
 );
