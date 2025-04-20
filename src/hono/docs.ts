@@ -5,16 +5,14 @@ import {
   OpenApiSpecsOptions,
 } from "hono-openapi";
 import { resolver } from "hono-openapi/zod";
-import { z } from "zod";
-
-const badRequestSchema = z.object({
-  errors: z.array(
-    z.object({
-      message: z.string(),
-      code: z.string(),
-    })
-  ),
-});
+import {
+  badRequestSchema,
+  forbiddenSchema,
+  internalServerErrorSchema,
+  unauthorizedSchema,
+} from "./templateResponses";
+import { getZodDefaults } from "@/utils/zodUtils";
+import { AnyZodObject } from "zod";
 
 interface SpecsOptions {
   title: string;
@@ -77,6 +75,41 @@ interface JsonResponseDocs {
   successSchema: Parameters<typeof resolver>[0];
 }
 
+const errorTemplates = [
+  {
+    code: 400,
+    schema: badRequestSchema,
+  },
+  {
+    code: 401,
+    schema: unauthorizedSchema,
+  },
+  {
+    code: 403,
+    schema: forbiddenSchema,
+  },
+  {
+    code: 500,
+    schema: internalServerErrorSchema,
+  }
+];
+
+const createErrorResponse = (schema: AnyZodObject) => ({
+  description: getZodDefaults(schema).message,
+  content: {
+    "application/json": {
+      schema: resolver(schema),
+    },
+  },
+});
+
+export const errorResponseDocs = Object.fromEntries(
+  errorTemplates.map(({ code, schema }) => [
+    code,
+    createErrorResponse(schema),
+  ])
+);
+
 export const jsonResponseDocs = (
   props: JsonResponseDocs
 ): DescribeRouteOptions => {
@@ -92,14 +125,8 @@ export const jsonResponseDocs = (
           },
         },
       },
-      400: {
-        description: "Bad Request",
-        content: {
-          "application/json": {
-            schema: resolver(badRequestSchema),
-          },
-        },
-      },
+      // Map error templates to response objects
+      ...errorResponseDocs,
     },
     validateResponse: true,
   };

@@ -6,7 +6,6 @@ import {
   streamText,
 } from "ai";
 import * as instructions from "@/utils/llms/instructions";
-import { cfGetCachedModelInstructions } from "./cloudflare/cfKvServices";
 import {
   cloudflareAi,
   defaultAiConfig,
@@ -36,18 +35,10 @@ export function errorHandler(error: unknown) {
 }
 
 export const llmStreamChatService = async (props: LlmStreamChatSeviceProps) => {
-  const chatSystemInstruction = await cfGetCachedModelInstructions(
-    instructions,
-    "clawdy_ai_instructions_md"
-  );
-  const toolsInstructions = await cfGetCachedModelInstructions(
-    instructions,
-    "clawdy_ai_tools_instructions_md"
-  );
-  const suggestedRepliesInstruction = await cfGetCachedModelInstructions(
-    instructions,
-    "clawdy_ai_suggested_replies_instructions_md"
-  );
+  const chatSystemInstruction = instructions.clawdy_ai_instructions_md;
+  const toolsInstructions = instructions.clawdy_ai_tools_instructions_md;
+  const suggestedRepliesInstruction =
+    instructions.clawdy_ai_suggested_replies_instructions_md;
 
   const cfModel = cloudflareAi("@cf/meta/llama-3.3-70b-instruct-fp8-fast");
   const geminiModel = googleAi("gemini-2.0-flash-001");

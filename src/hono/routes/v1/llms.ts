@@ -1,3 +1,4 @@
+import { errorResponseDocs } from "@/hono/docs";
 import { llmsStreamChatHandler } from "@/hono/handlers/llmsHandlers";
 import { Hono } from "hono";
 import { describeRoute } from "hono-openapi";
@@ -6,7 +7,7 @@ const llms = new Hono();
 const tags = ["LLMs"];
 
 llms.post(
-  "/stream/chat",
+  "/stream/chat/:name",
   describeRoute({
     tags,
     description: "Entry point for chat streaming using Vercel AI SDK",
@@ -30,6 +31,7 @@ llms.post(
           },
         },
       },
+      ...errorResponseDocs,
     },
   }),
   ...llmsStreamChatHandler
