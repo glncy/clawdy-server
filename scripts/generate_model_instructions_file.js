@@ -36,6 +36,9 @@ async function generateInstructionsFile() {
 
     // Process each file
     for (const file of files) {
+      // Skip .git folders or files
+      if (file.includes('.git')) continue;
+
       const filePath = path.join(instructionsDir, file);
 
       // Skip directories
