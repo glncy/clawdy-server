@@ -12,7 +12,7 @@ import {
   googleAi,
 } from "@/utils/llms/aiSdkLlms";
 import { suggestedRepliesSchema } from "@/schemas/toolSchemas";
-import { draftTransactions, saveTransactions } from "@/utils/llms/tools";
+import { beforeDraftTransactions, draftTransactions, saveTransactions } from "@/utils/llms/tools";
 
 interface LlmStreamChatSeviceProps {
   messages?: CoreMessage[];
@@ -66,6 +66,7 @@ export const llmStreamChatService = async (props: LlmStreamChatSeviceProps) => {
         tools: {
           saveTransactions,
           draftTransactions,
+          beforeDraftTransactions,
         },
         onFinish: async (message) => {
           if (message.finishReason === "stop") {

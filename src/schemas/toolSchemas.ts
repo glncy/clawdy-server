@@ -6,9 +6,13 @@ export const suggestedRepliesSchema = z
       .array(z.string().min(1).max(50))
       .min(3)
       .max(6)
-      .describe("Array of contextually relevant suggested replies (3-6 items) for the user to choose from"),
+      .describe(
+        "Array of contextually relevant suggested replies (3-6 items) for the user to choose from"
+      ),
   })
-  .describe("Schema for generating suggested quick replies based on conversation context");
+  .describe(
+    "Schema for generating suggested quick replies based on conversation context"
+  );
 
 export const transactionsSchema = z
   .object({
@@ -19,11 +23,28 @@ export const transactionsSchema = z
             name: z.string().min(1),
             amount: z.number().min(1),
             category: z.string().min(1),
-            categoryEmoji: z.string().describe("Visual emoji representation of the transaction category"),
+            categoryEmoji: z
+              .string()
+              .describe(
+                "Visual emoji representation of the transaction category"
+              ),
+            categoryLocalId: z
+              .number()
+              .optional()
+              .describe(
+                "Local ID of the category, undefined if no matching category exists"
+              ),
             transactionType: z.enum(["income", "expense"]),
           })
-          .describe("Individual financial transaction record with categorization and type")
+          .describe(
+            "Individual financial transaction record with categorization and type"
+          )
       )
-      .describe("Collection of financial transactions to be processed or saved"),
+      .describe(
+        "Collection of financial transactions to be processed or saved"
+      ),
   })
-  .describe("Schema for handling multiple financial transaction records in a single request");
+  .describe(
+    "Schema for handling multiple financial transaction records in a single request"
+  );
+
