@@ -10,6 +10,11 @@ export const cfGetCachedModelInstructions = async <T extends Record<string, stri
     return instructions[key];
   }
   const CLAWDY_AI_INSTRUCTIONS_KV = await getClawdyAiInstructionsKV();
+
+  if (!CLAWDY_AI_INSTRUCTIONS_KV) {
+    throw new Error("Cloudflare KV is not available");
+  }
+
   let kvInstructions = await CLAWDY_AI_INSTRUCTIONS_KV.get(String(key));
 
   if (!kvInstructions) {
