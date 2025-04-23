@@ -16,11 +16,7 @@
   "kv_namespaces": [
     {
       "binding": "NEXT_INC_CACHE_KV",
-      "id": "49940267587a407c92030bac8e16ba5d"
-    },
-    {
-      "binding": "CLAWDY_AI_INSTRUCTIONS_KV",
-      "id": "d73e18d50e194abd9dc14b8464f39685"
+      "id": "ff0838ec56664f449aa62e32ba020a2e"
     }
   ],
   "services": [
@@ -31,5 +27,10 @@
   ],
   "ai": {
     "binding": "AI"
+  },
+  "env": {
+    "staging": {
+      "workers_dev": true,
+    }
   }
 }
