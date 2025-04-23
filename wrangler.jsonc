@@ -31,6 +31,12 @@
   "env": {
     "staging": {
       "workers_dev": true,
+      "kv_namespaces": [
+        {
+          "binding": "NEXT_INC_CACHE_KV",
+          "id": "e8f38e2ff33d419cacb4c25749902d37"
+        }
+      ]
     }
   }
 }
