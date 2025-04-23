@@ -5,8 +5,10 @@ import { apiReference } from "@scalar/hono-api-reference";
 import { v1ApiRoutes } from "@/hono/routes/v1";
 import { apiRefOptions, describeRouteJson, docSpecs } from "@/hono/docs";
 import { okResponse } from "@/hono/templateResponses";
+import { CLOUDFLARE_ENABLED } from "@/constants";
 
-const app = new Hono().basePath("/api");
+const basePath = CLOUDFLARE_ENABLED ? "/cf/api" : "/api";
+const app = new Hono().basePath(basePath);
 
 // API for health check
 app.get(
@@ -33,9 +35,9 @@ app.route("/v1", v1ApiRoutes);
 app.get(
   "/v1/open-api",
   openAPISpecs(
-    new Hono().basePath("/api/v1").route("/", v1ApiRoutes),
+    new Hono().basePath(`${basePath}/v1`).route("/", v1ApiRoutes),
     docSpecs({
-      title: "Clawdy API",
+      title: `Clawdy API (${CLOUDFLARE_ENABLED ? "Cloudflare" : "Vercel"})`,
       version: "v1",
       description: "Clawdy API",
     })
@@ -46,7 +48,7 @@ app.get(
   "/v1/docs",
   apiReference(
     apiRefOptions({
-      url: "/api/v1/open-api",
+      url: `${basePath}/v1/open-api`,
     })
   )
 );

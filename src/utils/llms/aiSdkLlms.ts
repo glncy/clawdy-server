@@ -10,12 +10,14 @@ export const defaultAiConfig = {
 
 export const googleAi = createGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/98bae7e52ca93aeab52f69d53e51755c/clawdy-ai-gateway/google-ai-studio/v1beta",
 });
 
-type CloudflareAiModels = Parameters<ReturnType<typeof getWorkersAi>>[0];
+type GetWorkersAi = Exclude<ReturnType<typeof getWorkersAi>, null>;
+type CloudflareAiModels = Parameters<GetWorkersAi>[0];
 export const cloudflareAi = (model: CloudflareAiModels) => {
   const workersAi = getWorkersAi();
+  if (!workersAi) {
+    return undefined;
+  }
   return workersAi(model);
 };

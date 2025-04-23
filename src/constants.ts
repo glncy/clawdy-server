@@ -1,0 +1,1 @@
+export const CLOUDFLARE_ENABLED = process.env.CLOUDFLARE_ENABLED ?? false;

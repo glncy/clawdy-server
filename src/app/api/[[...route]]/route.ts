@@ -1,6 +1,10 @@
-import { handle } from "hono/vercel";
-import app from "@/hono";
+import { CLOUDFLARE_ENABLED } from "@/constants";
 
-// Hono Handler for Vercel
-export const GET = handle(app);
-export const POST = handle(app);
+if (CLOUDFLARE_ENABLED) {
+  throw new Error(
+    "You are on Cloudflare Environment. Please use /cf route instead of / route."
+  );
+}
+
+export const runtime = "edge";
+export * from "@/hono/route";
