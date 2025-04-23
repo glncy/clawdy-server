@@ -36,7 +36,16 @@
           "binding": "NEXT_INC_CACHE_KV",
           "id": "e8f38e2ff33d419cacb4c25749902d37"
         }
-      ]
+      ],
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "clawdy-server-staging"
+        }
+      ],
+      "ai": {
+        "binding": "AI"
+      }
     }
   }
 }
