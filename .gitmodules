@@ -1,3 +1,3 @@
-[submodule "src/utils/llms/instructions"]
-	path = src/utils/llms/instructions
+[submodule "submodules/instructions"]
+	path = submodules/instructions
 	url = https://github.com/glncy/clawdy-ai-instructions.git
