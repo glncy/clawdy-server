@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Define the source directory and output file
-const instructionsDir = path.join(__dirname, "../src/utils/llms/instructions");
+const instructionsDir = path.join(__dirname, "../submodules/instructions");
 const outputFile = path.join(__dirname, "../src/utils/llms/instructions.ts");
 
 // Function to convert filename to variable name (replacing . with _)
