@@ -1,4 +1,3 @@
 [submodule "submodules/instructions"]
 	path = submodules/instructions
 	url = https://github.com/glncy/clawdy-ai-instructions.git
-	branch = main
