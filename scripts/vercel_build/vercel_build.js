@@ -8,7 +8,8 @@ const { isMatched, currentGitBranch } = buildUtils;
 
 // List of branches that are allowed to build
 const allowedBranches = [
-  "staging"
+  "main",
+  "staging",
 ];
 
 /**
