@@ -47,3 +47,4 @@ next-env.d.ts
 
 # model instructions ts file
 src/utils/llms/instructions.ts
+.env
